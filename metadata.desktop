@@ -1,0 +1,17 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Do This Now
+Type=Service
+ServiceTypes=Plasma/Applet
+Icon=chronometer
+X-Plasma-API=python
+X-Plasma-MainScript=code/main.py
+X-KDE-PluginInfo-Author=Ziling Zhao
+X-KDE-PluginInfo-Email=zilingzhao@gmail.com
+X-KDE-PluginInfo-Name=dothisnow
+X-KDE-PluginInfo-Version=0.1
+X-KDE-PluginInfo-Website=http://plasma.kde.org/
+X-KDE-PluginInfo-Category=Examples
+X-KDE-PluginInfo-Depends=
+X-KDE-PluginInfo-License=GPL
+X-KDE-PluginInfo-EnabledByDefault=true
