@@ -49,10 +49,17 @@ class TestNDT(unittest.TestCase):
 
     def testWrite(self):
         self.ndt.addTask("TEST1")
-        self.ndt.save()
-
         self.assertEqual(1, self.ndt.numTasks())
 
+    def testMultipleRW(self):
+        num = 4
+
+        self.assertEqual(0, self.ndt.numTasks())
+
+        for ii in range(0,4):
+            self.ndt.addTask("%d" % (ii+1))
+
+        self.assertEqual(num, self.ndt.numTasks())
 
 if __name__ == "__main__":
     ts = unittest.TestSuite((
