@@ -5,7 +5,7 @@ from PyQt4.QtGui import *
 from PyKDE4.plasma import Plasma
 from PyKDE4 import plasmascript
 
-class DoThisNow(plasmascript.Applet):
+class NowDoThis(plasmascript.Applet):
     def __init__(self, parent, args=None):
         plasmascript.Applet.__init__(self, parent)
 
@@ -25,4 +25,4 @@ class DoThisNow(plasmascript.Applet):
         self.resize(125,125)
 
 def CreateApplet(parent):
-    return DoThisNow(parent)
+    return NowDoThis(parent)
