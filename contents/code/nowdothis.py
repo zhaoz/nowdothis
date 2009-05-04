@@ -30,7 +30,7 @@ class NowDoThis(object):
         f = open(self.todoPath, "w")
 
         for todo in self.todos:
-            f.write(todo)
+            f.write("%s\n" % (todo))
 
         f.close()
 
