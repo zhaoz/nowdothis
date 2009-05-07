@@ -22,7 +22,7 @@ class NowDoThisMoid(plasmascript.Applet):
 
         self.settings = {}
         gc = self.config()
-        self.settings["editor"] = gc.readEntry("editor", "/usr/bin/kwrite")
+        self.settings["editor"] = gc.readEntry("editor", "/usr/bin/kate")
         self.ndt = NowDoThis(self.settings["editor"])
 
         self.layout = QGraphicsLinearLayout(Qt.Vertical, self.applet)
