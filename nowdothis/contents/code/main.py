@@ -6,12 +6,14 @@ from PyQt4.QtGui import *
 from PyKDE4.plasma import Plasma
 from PyKDE4 import plasmascript
 
-class NowDoThis(plasmascript.Applet):
+from nowdothis import NowDoThis
+
+class NowDoThisMoid(plasmascript.Applet):
     def __init__(self, parent, args=None):
         plasmascript.Applet.__init__(self, parent)
 
     def init(self):
-        self.setHasConfigurationInterface(False)
+        self.setHasConfigurationInterface(True)
         self.setAspectRatioMode(Plasma.Square)
 
         self.theme = Plasma.Svg(self)
@@ -25,5 +27,13 @@ class NowDoThis(plasmascript.Applet):
         self.setLayout(self.layout)
         self.resize(125,125)
 
+        self.settings = {}
+        gc = self.config()
+
+        self.settings["editor"] = gc.readEntry("editor", "/usr/bin/kwrite")
+
+        self.ndt = NowDoThis(self.settings["editor"])
+
+
 def CreateApplet(parent):
-    return NowDoThis(parent)
+    return NowDoThisMoid(parent)
