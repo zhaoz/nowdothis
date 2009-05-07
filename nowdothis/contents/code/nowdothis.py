@@ -4,7 +4,6 @@ import os
 
 FILENAME="todos"
 LOCKFILE="todos.lck"
-CONFIGFILE="config"
 DEFAULT_PATH="%s/nowdothis" % (os.path.expanduser("~"))
 
 class NowDoThis(object):
@@ -19,21 +18,19 @@ class NowDoThis(object):
         os.mkdir(basepath)
         self.todoPath = "%s/%s" % (basepath, FILENAME)
         self.lockFile = "%s/%s" % (basepath, LOCKFILE)
-        self.configFile = "%s/%s" % (basepath, CONFIGFILE)
 
         self.editor = editor
 
-        for path in (self.todoPath, self.configFile):
-            if not os.path.exists(path):
-                f = open(path, "a")
-                f.close()
+        if not os.path.exists(self.todoPath):
+            f = open(self.todoPath, "a")
+            f.close()
 
     def edit(self):
+        """
+        Call user defined editor to edit todos
+        """
         ret = os.spawnl(os.P_WAIT, self.editor, self.editor, self.todoPath)
-
-        # test ret value, should be 0
-        self.load()
-
+        self.load()     # reload after the user edited
 
     def save(self):
         """

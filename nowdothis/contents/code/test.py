@@ -10,9 +10,6 @@ def cleanTodo():
     if os.path.exists("%s/%s" % (TESTDIR, "todos")):
         os.remove("%s/%s" % (TESTDIR, "todos"))
 
-    if os.path.exists("%s/%s" % (TESTDIR, "config")):
-        os.remove("%s/%s" % (TESTDIR, "config"))
-
     if os.path.exists("%s/%s" % (TESTDIR, "todos.lck")):
         os.remove("%s/%s" % (TESTDIR, "todos.lck"))
 
