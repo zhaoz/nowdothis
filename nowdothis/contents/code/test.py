@@ -50,6 +50,9 @@ class TestNDT(unittest.TestCase):
         self.ndt.addTask("TEST1")
         self.assertEqual(1, self.ndt.numTasks())
 
+    def testDoubleInst(self):
+        self.ndt2 = NowDoThis("/usr/bin/vim", TESTDIR)
+
     def testMultipleRW(self):
         num = 4
 
