@@ -33,7 +33,7 @@ class TestBlank(unittest.TestCase):
         self.testRead()
 
     def testFinishedTask(self):
-        self.ndt.finishedTask()
+        self.ndt.finishTask()
 
     def testCurTask(self):
         self.assertEqual(None, self.ndt.curTask(), "Should be no cur task")

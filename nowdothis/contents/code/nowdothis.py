@@ -28,6 +28,8 @@ class NowDoThis(object):
             f = open(self.todoPath, "a")
             f.close()
 
+        self.load()
+
     def edit(self):
         """
         Call user defined editor to edit todos
@@ -69,9 +71,10 @@ class NowDoThis(object):
 
         return None
 
-    def finishedTask(self):
+    def finishTask(self):
         if self.todos:
-            self.todos.pop(0)
+            return self.todos.pop(0)
+        return None
 
     def addTask(self, task):
         """
