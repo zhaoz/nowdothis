@@ -4,11 +4,12 @@ import os
 
 FILENAME="todos"
 LOCKFILE="todos.lck"
+CONFIGFILE="config"
 DEFAULT_PATH="%s/nowdothis" % (os.path.expanduser("~"))
 
 class NowDoThis(object):
 
-    def __init__(self, basepath=DEFAULT_PATH):
+    def __init__(self, editor, basepath=DEFAULT_PATH):
         """
         Given path, read in todos
         """
@@ -18,10 +19,22 @@ class NowDoThis(object):
         os.mkdir(basepath)
         self.todoPath = "%s/%s" % (basepath, FILENAME)
         self.lockFile = "%s/%s" % (basepath, LOCKFILE)
+        self.configFile = "%s/%s" % (basepath, CONFIGFILE)
 
-        if not os.path.exists(self.todoPath):
-            f = open(self.todoPath, "a")
-            f.close()
+        self.editor = editor
+
+        for path in (self.todoPath, self.configFile):
+            if not os.path.exists(path):
+                f = open(path, "a")
+                f.close()
+
+    def edit(self):
+        os.spawnl(os.P_WAIT, "/usr/bin/cat", self.todoPath)
+
+        ret = os.spawnl(os.P_WAIT, self.editor, self.todoPath)
+
+        # test ret value, should be 0
+        self.load()
 
 
     def save(self):
@@ -44,7 +57,7 @@ class NowDoThis(object):
         f = open(self.todoPath, "r")
 
         for line in f:
-            self.todos.append(line)
+            self.todos.append(line.strip())
 
         f.close()
 
@@ -67,10 +80,8 @@ class NowDoThis(object):
         add task and write it out
         """
         self.todos.append(task)
-        self.save()
 
     def numTasks(self):
-        self.load()
         return len(self.todos)
 
     def insertTask(self, pos, task):
@@ -81,7 +92,6 @@ class NowDoThis(object):
             pos = len(self.todos)
 
         self.todos.insert(pos, task)
-        self.save()
 
     def isLocked(self):
         """
