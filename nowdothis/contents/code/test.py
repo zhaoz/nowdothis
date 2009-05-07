@@ -10,6 +10,9 @@ def cleanTodo():
     if os.path.exists("%s/%s" % (TESTDIR, "todos")):
         os.remove("%s/%s" % (TESTDIR, "todos"))
 
+    if os.path.exists("%s/%s" % (TESTDIR, "config")):
+        os.remove("%s/%s" % (TESTDIR, "config"))
+
     if os.path.exists("%s/%s" % (TESTDIR, "todos.lck")):
         os.remove("%s/%s" % (TESTDIR, "todos.lck"))
 
@@ -19,7 +22,7 @@ def cleanTodo():
 class TestBlank(unittest.TestCase):
 
     def setUp(self):
-        self.ndt = NowDoThis(TESTDIR)
+        self.ndt = NowDoThis("/usr/bin/vim", TESTDIR)
 
     def tearDown(self):
         cleanTodo()
@@ -41,7 +44,7 @@ class TestBlank(unittest.TestCase):
 class TestNDT(unittest.TestCase):
 
     def setUp(self):
-        self.ndt = NowDoThis(TESTDIR)
+        self.ndt = NowDoThis("/usr/bin/vim", TESTDIR)
 
     def tearDown(self):
         cleanTodo()
@@ -59,6 +62,22 @@ class TestNDT(unittest.TestCase):
             self.ndt.addTask("%d" % (ii+1))
 
         self.assertEqual(num, self.ndt.numTasks())
+
+        self.ndt.save()
+
+        f = open(self.ndt.todoPath, "r")
+        ii = 0
+        for line in f:
+            self.assertEqual(self.ndt.todos[ii], line.strip())
+            ii += 1
+
+        f.close()
+
+        self.ndt.save()
+        self.assertEqual(num, self.ndt.numTasks())
+        for ii in range(0,4):
+            self.assertEqual(str(ii+1), self.ndt.todos[ii])
+
 
 if __name__ == "__main__":
     ts = unittest.TestSuite((
