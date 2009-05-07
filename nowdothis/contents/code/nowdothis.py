@@ -4,10 +4,11 @@ import os
 
 FILENAME="todos"
 LOCKFILE="todos.lck"
+DEFAULT_PATH="%s/nowdothis" % (os.path.expanduser("~"))
 
 class NowDoThis(object):
 
-    def __init__(self, basepath):
+    def __init__(self, basepath=DEFAULT_PATH):
         """
         Given path, read in todos
         """
@@ -86,5 +87,5 @@ class NowDoThis(object):
         """
         Check to see if lock file exists
         """
-        pass
+        raise Exception("Locking not implemented yet")
 
