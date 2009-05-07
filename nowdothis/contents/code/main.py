@@ -1,4 +1,5 @@
-#
+# Super Simple Todo List
+# Ziling Zhao <zilingzhao@gmail.com>
 
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
