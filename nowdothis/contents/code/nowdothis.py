@@ -29,9 +29,7 @@ class NowDoThis(object):
                 f.close()
 
     def edit(self):
-        os.spawnl(os.P_WAIT, "/usr/bin/cat", self.todoPath)
-
-        ret = os.spawnl(os.P_WAIT, self.editor, self.todoPath)
+        ret = os.spawnl(os.P_WAIT, self.editor, self.editor, self.todoPath)
 
         # test ret value, should be 0
         self.load()
