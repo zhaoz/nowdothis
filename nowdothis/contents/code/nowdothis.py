@@ -87,5 +87,5 @@ class NowDoThis(object):
         """
         Check to see if lock file exists
         """
-        raise Exception("Locking not implemented yet")
+        raise NotImplementedError("Locking not implemented yet")
 
