@@ -15,7 +15,10 @@ class NowDoThis(object):
         self.todos = []
 
         self.basepath = basepath
-        os.mkdir(basepath)
+
+        if not os.path.exists(basepath):
+            os.mkdir(basepath)
+
         self.todoPath = "%s/%s" % (basepath, FILENAME)
         self.lockFile = "%s/%s" % (basepath, LOCKFILE)
 
