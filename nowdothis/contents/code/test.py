@@ -4,7 +4,7 @@ import os
 import unittest
 from nowdothis import NowDoThis
 
-TESTDIR="/tmp/ndt_test"
+TESTDIR="%s/ndt_test" % (os.getcwd())
 
 def cleanTodo():
     if os.path.exists("%s/%s" % (TESTDIR, "todos")):
@@ -15,7 +15,6 @@ def cleanTodo():
 
     if os.path.exists(TESTDIR):
         os.rmdir(TESTDIR)
-
 
 class TestBlank(unittest.TestCase):
 
