@@ -4,7 +4,7 @@ import os
 
 FILENAME="todos"
 LOCKFILE="todos.lck"
-DEFAULT_PATH="%s/nowdothis" % (os.path.expanduser("~"))
+DEFAULT_PATH="%s/.nowdothis" % (os.path.expanduser("~"))
 
 class NowDoThis(object):
 
