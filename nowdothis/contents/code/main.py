@@ -13,7 +13,7 @@ class NowDoThisMoid(plasmascript.Applet):
         plasmascript.Applet.__init__(self, parent)
 
     def init(self):
-        self.setHasConfigurationInterface(True)
+        self.setHasConfigurationInterface(False)
         self.setAspectRatioMode(Plasma.IgnoreAspectRatio)
 
         self.theme = Plasma.Svg(self)
