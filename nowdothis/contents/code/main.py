@@ -14,7 +14,7 @@ class NowDoThisMoid(plasmascript.Applet):
 
     def init(self):
         self.setHasConfigurationInterface(True)
-        self.setAspectRatioMode(Plasma.Square)
+        self.setAspectRatioMode(Plasma.IgnoreAspectRatio)
 
         self.theme = Plasma.Svg(self)
         self.theme.setImagePath("widgets/background")
@@ -57,7 +57,6 @@ class NowDoThisMoid(plasmascript.Applet):
         if self.ndt.finishTask():
             self.ndt.save()
             self.updateTaskText()
-
 
 def CreateApplet(parent):
     return NowDoThisMoid(parent)
