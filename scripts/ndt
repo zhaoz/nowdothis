@@ -1,0 +1,8 @@
+#!/usr/bin/python
+
+from nowdothis import NowDoThis
+
+ndt = NowDoThis('/usr/bin/vim')
+
+print ndt.curTask()
+
