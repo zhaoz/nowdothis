@@ -1,6 +1,7 @@
 # Super simple todos
 
 import os
+import codecs
 
 FILENAME="todos"
 LOCKFILE="todos.lck"
@@ -41,7 +42,7 @@ class NowDoThis(object):
         """
         Save the todos to path
         """
-        f = open(self.todoPath, "w")
+        f = codecs.open(self.todoPath, "w", "utf-8")
 
         for todo in self.todos:
             f.write("%s\n" % (todo))
@@ -54,7 +55,7 @@ class NowDoThis(object):
         """
         self.todos = []
 
-        f = open(self.todoPath, "r")
+        f = codecs.open(self.todoPath, "r", "utf-8")
 
         for line in f:
             self.todos.append(line.strip())
