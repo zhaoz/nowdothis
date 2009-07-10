@@ -1,4 +1,4 @@
 Installation Instructions:
 
 1. make
-2. plasmapkg -i nowdothis.zip
+2. plasmapkg -i nowdothis.plasmoid
