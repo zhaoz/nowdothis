@@ -1,6 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Name=Now Do This
+Comment=Super Simple Todo List
 Type=Service
 ServiceTypes=Plasma/Applet
 X-Plasma-API=python
