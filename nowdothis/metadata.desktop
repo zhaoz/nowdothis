@@ -4,8 +4,11 @@ Name=Now Do This
 Comment=Super Simple Todo List
 Type=Service
 ServiceTypes=Plasma/Applet
+Icon=nowdothis-icon
+
 X-Plasma-API=python
 X-Plasma-MainScript=code/main.py
+
 X-KDE-PluginInfo-Author=Ziling Zhao
 X-KDE-PluginInfo-Email=zilingzhao@gmail.com
 X-KDE-PluginInfo-Name=nowdothis
