@@ -1,6 +1,8 @@
 # Super Simple Todo List
 # Ziling Zhao <zilingzhao@gmail.com>
 
+import os
+
 from PyQt4.QtCore import *
 from PyQt4.QtGui import *
 from PyKDE4.plasma import Plasma
@@ -22,7 +24,14 @@ class NowDoThisMoid(plasmascript.Applet):
 
         self.settings = {}
         gc = self.config()
-        self.settings["editor"] = gc.readEntry("editor", QVariant("/usr/bin/kate")).toString()
+        self.settings["editor"] = gc.readEntry("editor", None).toString()
+
+        if not self.settings["editor"]:
+            if os.environ.has_key('VISUAL'):
+                self.settings["editor"] = os.environ['VISUAL']
+            else:
+                self.settings["editor"] = "/usr/bin/kate"
+
         self.ndt = NowDoThis(self.settings["editor"])
 
         self.layout = QGraphicsLinearLayout(Qt.Vertical, self.applet)
