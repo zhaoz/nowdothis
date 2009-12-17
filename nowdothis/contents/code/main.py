@@ -51,7 +51,8 @@ class NowDoThisMoid(plasmascript.Applet):
         self.layout.addItem(edit)
         self.connect(edit, SIGNAL("clicked()"), self.edit)
 
-        self.settings['size'] = [x.toInt()[0] for x in gc.readEntry("size", (125, 125)).toList()]
+        self.settings['size'] = [x.toInt()[0]
+                for x in gc.readEntry("size", (125, 125)).toList()]
         self.resize(*self.settings['size'])
 
 
