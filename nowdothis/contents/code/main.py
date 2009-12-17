@@ -51,10 +51,12 @@ class NowDoThisMoid(plasmascript.Applet):
         self.layout.addItem(edit)
         self.connect(edit, SIGNAL("clicked()"), self.edit)
 
-        self.settings['size'] = [x.toInt()[0]
-                for x in gc.readEntry("size", (125, 125)).toList()]
-        self.resize(*self.settings['size'])
+        self.setMinimumWidth(100)
+        self.setMinimumHeight(100)
 
+        if gc.readEntry("size_set", 0).toInt() == 0:
+            gc.setEntry("size_set", 1)
+            self.resize(125, 125)
 
     def updateTaskText(self):
         self.task.setText(self.ndt.curTask() or "No Tasks")
