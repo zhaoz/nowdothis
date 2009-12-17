@@ -6,7 +6,7 @@ default: all
 all: cleanpyc plasmapkg
 
 plasmapkg:
-	cd nowdothis && zip -r ../${PLASMOID} . -x \*.gitignore \*.pyc \*.swp
+	cd nowdothis && zip -r ../${PLASMOID} . -x \*.gitignore \*.pyc \*.swp \*.pyo
 
 clean: cleanpyc
 	rm -f nowdothis.plasmoid
