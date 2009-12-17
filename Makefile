@@ -17,7 +17,7 @@ cleanpyc:
 install:
 	plasmapkg --install ${PLASMOID}
 
-remove:
+uninstall:
 	plasmapkg --remove ${PROJNAME}
 
 view:
