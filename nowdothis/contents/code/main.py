@@ -40,16 +40,18 @@ class NowDoThisMoid(plasmascript.Applet):
         self.task = Plasma.Label(self.applet)
         self.task.setText(self.ndt.curTask() or "No Tasks")
         self.layout.addItem(self.task)
-
-        done = Plasma.PushButton(self.applet)
-        done.setText("Done")
-        self.layout.addItem(done)
-        self.connect(done, SIGNAL("clicked()"), self.finishTask)
+        self.layout.setStretchFactor(self.task, 4)
 
         edit = Plasma.PushButton(self.applet)
         edit.setText("Edit")
         self.layout.addItem(edit)
         self.connect(edit, SIGNAL("clicked()"), self.edit)
+
+        done = Plasma.PushButton(self.applet)
+        done.setText("Done")
+        self.layout.addItem(done)
+        self.connect(done, SIGNAL("clicked()"), self.finishTask)
+        self.layout.setStretchFactor(done, 2)
 
         self.setMinimumWidth(100)
         self.setMinimumHeight(100)
